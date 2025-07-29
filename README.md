@@ -10,11 +10,7 @@ Criação de Agenda Web funcional para apresentar no processo seletivo da Bit Co
 
 ## Objetivo Técnico
 
-Desenvolver uma aplicação web monolítica com funcionalidades CRUD (Create, Read, Update, Delete) para o gerenciamento de agendamentos, utilizando Python e o ecossistema Flask.
-
-## Pilha de Tecnologias Proposta (Tech Stack)
-
-A seleção de ferramentas visa a produtividade, segurança e simplicidade, adequadas ao escopo do projeto.
+Desenvolver uma aplicação web CRUD (Create, Read, Update, Delete) para o gerenciamento de agendamentos, utilizando Python e o ecossistema Flask.
 
 * **Backend:**
     * **Python 3:** Linguagem principal do projeto.
@@ -22,16 +18,16 @@ A seleção de ferramentas visa a produtividade, segurança e simplicidade, adeq
 
 * **Persistência de Dados:**
     * **SQLite:** SGBD embutido para agilidade no desenvolvimento e ausência de configuração de servidor.
-    * **Flask-SQLAlchemy:** Camada de abstração (ORM) para mapear objetos Python para o banco de dados, garantindo produtividade e segurança contra ataques de SQL Injection.
-
+    * **Flask-SQLAlchemy:** Camada de abstração (ORM) para mapear objetos Python para o banco de dados.
+    * 
 * **Frontend & Formulários:**
     * **Jinja2:** Motor de templates para renderização dinâmica do HTML no servidor.
     * **Bootstrap:** Framework CSS para a criação rápida de uma interface limpa e responsiva.
-    * **Flask-WTF:** Biblioteca para validação segura de formulários no lado do servidor e proteção contra CSRF.
+    * **Flask-WTF:** Biblioteca para validação segura de formulários.
 
 ## Arquitetura Planejada
 
-A aplicação seguirá uma arquitetura monolítica simples. O Flask será responsável por receber as requisições HTTP, processar a lógica de negócio, interagir com o banco de dados através da ORM e renderizar os templates HTML para o cliente.
+A aplicação seguirá uma arquitetura simples. O Flask será responsável por receber as requisições HTTP, processar a lógica de negócio, interagir com o banco de dados através da ORM e renderizar os templates HTML para o cliente.
 
 ## Funcionalidades Planejadas
 
