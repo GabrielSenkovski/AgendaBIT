@@ -1,0 +1,30 @@
+# .gitignore para projeto Python/Flask
+
+# Ambiente Virtual
+venv/
+.venv/
+
+# Cache e arquivos compilados do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Banco de dados local
+*.db
+*.sqlite3
+
+# Configurações de IDEs e editores
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Arquivos de Sistema Operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos de ambiente e logs
+.env
+.env.*
+*.log
