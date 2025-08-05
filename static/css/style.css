@@ -1,0 +1,153 @@
+/*Geral*/
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.agenda{
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/*Calendário*/
+.calendario, .dias-semana, .seteh, .oitoh, .noveh, .dezh, .onzeh, .dozeh, .umah, .duash, .tresh, .quatroh, .cincoh, .seish {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1.5px solid #000000;
+}
+
+.calendario {
+    width: 70%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.calendario th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+.calendario th, .calendario td{
+    border: 1.5px solid #000000;
+    padding: 8px;
+    text-align: center;
+}
+
+.calendario td{
+    height: 79px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 0px;
+    white-space: nowrap;
+}
+
+/*Cabeçalho Superior*/
+.nome-agenda{
+    font-weight: bold;
+}
+
+.cabecalho-superior{
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #4c4e4f;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.579);
+    border-radius: 5px;
+    margin-bottom: 0.75px;
+}
+
+.mudar-semana{
+    color: #3681cb;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+/*Lateral esquerda*/
+.lateral-esquerda{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    padding-right: 0.5px;
+}
+
+.compromissos{
+    background-color: rgb(139, 138, 138);
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(30, 28, 28, 0.525);
+    margin-bottom: 2px;
+    margin-top: 0.75px;
+    margin-right: 0.01px;
+}
+
+.compromissos h4{
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    font-size: 1.1rem;
+}
+
+.lista-compromissos {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lista-compromissos li{
+    padding: 20px 0;
+    border-bottom: 1px solid #f5f5f5;
+    font-size: 0.9rem;
+}
+
+.lista-compromissos li:last-child {
+    border-bottom: none;
+}
+
+.botoes-marcar{
+    display: flex;
+    gap: 1px;
+}
+
+.botoes-marcar button{
+    flex: 1;
+    padding: 25px 0px;
+    width: 5%;
+    box-shadow: 0 2px 5px rgba(11, 11, 11, 0.704);
+}
+
+.desmarcar{
+    border-right-width: 1px;
+    background-color: rgb(239, 47, 47);
+}
+
+.editar{
+    background-color: aquamarine;
+}
+
+.marcar{
+    background-color: rgb(56, 231, 56);
+}
+
+.botoes-mudar{
+    display: flex;
+    gap: 1px;
+}
+
+.botoes-mudar  button{
+    width: 100%;
+    padding: 22px 0px;
+}
+
+.mudar{
+    background-color: purple;
+}
+
+
+

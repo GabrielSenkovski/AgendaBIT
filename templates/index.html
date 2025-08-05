@@ -4,12 +4,142 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="TesteAgenda.css">
     <title>Minha Agenda</title>
 </head>
 <body>
-    <nav class="navbar navbar-dark bg-dark mb-4">
-        <a class="navbar-brand" href="{{ url_for('index') }}">Agenda Simples</a>
-    </nav>
+    <div class="agenda">
+        <div class="cabecalho-superior">
+            <span class="mudar-semana">← Semana anterior</span>
+            <span>Dia: 07/Junho</span>
+            <span class="nome-agenda">Minha Agenda</span>
+            <span>Semana: 03/Junho - 09/Junho</span>
+            <span class="mudar-semana">Semana seguinte →</span>
+        </div>
+    
+        <div class="lateral-esquerda">
+            <div class="compromissos">
+                <h5>Próximos compromissos</h5>
+                <ul class="lista-compromissos">
+                    <li>Compromisso 1</li>
+                    <li>Compromisso 2</li>
+                    <li>Compromisso 3</li>
+                    <li>Compromisso 4</li>
+                    <li>Compromisso 5</li>
+                    <li>Compromisso 6</li>
+                    <li>Compromisso 7</li>
+                </ul>
+            </div>
+
+            <div class="botoes-marcar">
+                <button class="marcar">Marcar compromisso</button>
+                <button class="editar">Editar compromisso</button>
+                <button class="desmarcar">Desmarcar compromisso</button>
+            </div>
+
+            <div class="botoes-mudar">
+                <button class="buscar">🔍︎Buscar dia</button>
+                <button class="mudar">Mudar turno</button>
+            </div>
+        </div>
+
+        <table class="calendario">
+            <thead>
+                <tr class="dias-semana">
+                    <th>Domingo</th>
+                    <th>Segunda-feira</th>
+                    <th>Terça-feira</th>
+                    <th>Quarta-feira</th>
+                    <th>Quinta-feira</th>
+                    <th>Sexta-feira</th>
+                    <th>Sábado</th>
+                </tr>
+            </thead>
+
+            <tbody class="horarios">
+                <tr class="seteh">
+                    <td>primeiro horario dom</td>
+                    <td>primeiro horario seg</td>
+                    <td>primeiro horario terc</td>
+                    <td>primeiro horario quarta</td>
+                    <td>primeiro horario quinta</td>
+                    <td>primeiro horario sexta</td>
+                    <td>primeiro horario sábado</td>
+                </tr>
+
+                <tr class="oitoh">
+                    <td>segundo horario dom</td>
+                    <td>segundo horario seg</td>
+                    <td>segundo horario terc</td>
+                    <td>segundo horario quarta</td>
+                    <td>segundo horario quinta</td>
+                    <td>segundo horario sexta</td>
+                    <td>segundo horario sábado</td>
+                </tr>
+
+                <tr class="noveh">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+
+                <tr class="dezh">
+                    <td>quarto horario dom</td>
+                    <td>quarto horario seg</td>
+                    <td>quarto horario terc</td>
+                    <td>quarto horario quarta</td>
+                    <td>quarto horario quinta</td>
+                    <td>quarto horario sexta</td>
+                    <td>quarto horario sábado</td>
+                </tr>
+
+                <tr class="onzeh">
+                    <td>quinto horario dom</td>
+                    <td>quinto horario seg</td>
+                    <td>quinto horario terc</td>
+                    <td>quinto horario quarta</td>
+                    <td>quinto horario quinta</td>
+                    <td>quinto horario sexta</td>
+                    <td>quinto horario sábado</td>
+                </tr>
+
+                <tr class="dozeh">
+                    <td>sexto horario dom</td>
+                    <td>sexto horario seg</td>
+                    <td>sexto horario terc</td>
+                    <td>sexto horario quarta</td>
+                    <td>sexto horario quinta</td>
+                    <td>sexto horario sexta</td>
+                    <td>sexto horario sábado</td>
+                </tr>
+
+                <tr class="umah">
+                    <td>sétimo horario dom</td>
+                    <td>sétimo horario seg</td>
+                    <td>sétimo horario terc</td>
+                    <td>sétimo horario quarta</td>
+                    <td>sétimo horario quinta</td>
+                    <td>sétimo horario sexta</td>
+                    <td>sétimo horario sábado</td>
+                </tr>
+
+                <tr class="duash">
+                    <td>oitavo horario dom</td>
+                    <td>oitavo horario seg</td>
+                    <td>oitavo horario terc</td>
+                    <td>oitavo horario quarta</td>
+                    <td>oitavo horario quinta</td>
+                    <td>oitavo horario sexta</td>
+                    <td>oitavo horario sábado</td>
+                </tr>   
+            </tbody>
+        </table>
+    </div>
+
     <div class="container">
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
