@@ -21,7 +21,7 @@ body {
 }
 
 .calendario {
-    width: 70%;
+    width: 77%;
     border-collapse: collapse;
     background-color: white;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -39,11 +39,16 @@ body {
 }
 
 .calendario td{
-    height: 79px;
+    height: 70px;
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 0px;
     white-space: nowrap;
+    padding: 0px;
+}
+
+.dias-semana th{
+    width: 500px;
 }
 
 /*Cabeçalho Superior*/
@@ -71,7 +76,7 @@ body {
 
 /*Lateral esquerda*/
 .lateral-esquerda{
-    width: 25%;
+    width: 215px;
     display: flex;
     flex-direction: column;
     padding-right: 0.5px;
@@ -79,17 +84,18 @@ body {
 
 .compromissos{
     background-color: rgb(139, 138, 138);
-    padding: 15px;
+    padding-top: 15px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(30, 28, 28, 0.525);
-    margin-bottom: 2px;
+    margin-bottom: 0px;
     margin-top: 0.75px;
     margin-right: 0.01px;
 }
 
-.compromissos h4{
+.compromissos h5{
     margin-top: 0;
-    padding-bottom: 10px;
+    margin-bottom: 0;
+    padding-bottom: 7px;
     border-bottom: 1px solid #eee;
     font-size: 1.1rem;
 }
@@ -104,6 +110,9 @@ body {
     padding: 20px 0;
     border-bottom: 1px solid #f5f5f5;
     font-size: 0.9rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .lista-compromissos li:last-child {
@@ -112,7 +121,7 @@ body {
 
 .botoes-marcar{
     display: flex;
-    gap: 1px;
+    gap: 0.5px;
 }
 
 .botoes-marcar button{
@@ -137,7 +146,7 @@ body {
 
 .botoes-mudar{
     display: flex;
-    gap: 1px;
+    gap: 0.11px;
 }
 
 .botoes-mudar  button{
