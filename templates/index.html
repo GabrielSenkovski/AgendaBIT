@@ -32,7 +32,7 @@
             </div>
 
             <div class="botoes-marcar">
-                <button class="marcar">Agendar</button>
+                <button id="abrir-agendamento" class="marcar">Agendar</button>
                 <button class="editar">Editar</button>
                 <button class="desmarcar">Remover</button>
             </div>
@@ -40,6 +40,12 @@
             <div class="botoes-mudar">
                 <button class="buscar">🔍︎Buscar dia</button>
                 <button class="mudar">Mudar turno</button>
+            </div>
+        </div>
+
+        <div id="modal-agendamento" class="modal-agenda">
+            <div class="modal-content">
+                <iframe src="form.html" width="100%" height="300" style="border:none;"></iframe>
             </div>
         </div>
 
@@ -151,5 +157,18 @@
 
         {% block content %}{% endblock %}
     </div>
+
+    <script>
+        document.getElementById("abrir-agendamento").addEventListener("click", function(event){
+            document.getElementById("modal-agendamento").style.display = "block";
+        });
+
+        window.onclick = function(event){
+            if(event.target == document.getElementById("modal-agendamento")){
+                document.getElementById("modal-agendamento").style.display = "none";
+            }
+        }
+
+    </script>
 </body>
 </html>

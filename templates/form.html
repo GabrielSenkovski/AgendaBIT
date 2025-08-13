@@ -1,25 +1,67 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2>{{ titulo_pagina }}</h2>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Formulário de Agendamento</title>
+<link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <div class="modal">
+    <h3>Agendar compromisso</h3>
 
-    <form method="POST" action="{{ url_for('edit', id=agendamento.id) if agendamento else url_for('add') }}">
-        <div class="form-group">
-            <label for="titulo">Título</label>
-            <input type="text" class="form-control" id="titulo" name="titulo" 
-                   value="{{ agendamento.titulo if agendamento else '' }}" required>
-        </div>
-        <div class="form-group">
-            <label for="data_evento">Data do Evento</label>
-            <input type="date" class="form-control" id="data_evento" name="data_evento" 
-                   value="{{ agendamento.data_evento.strftime('%Y-%m-%d') if agendamento else '' }}" required>
-        </div>
-        <div class="form-group">
-            <label for="descricao">Descrição</label>
-            <textarea class="form-control" id="descricao" name="descricao" rows="3">{{ agendamento.descricao if agendamento else '' }}</textarea>
-        </div>
-        
-        <button type="submit" class="btn btn-success">Salvar</button>
-        <a href="{{ url_for('index') }}" class="btn btn-light">Cancelar</a>
+    <form id="form-agendamento">
+      <label>Título:</label><br>
+      <input  id="titulo" type="text"><br><br>
+      <label>Data:</label><br>
+      <input id="data" type="date"><br><br>
+      <label>Descrição:</label><br>
+      <textarea></textarea><br><br>
+      
+      <button id="cancelar" class="botao-cancelar" type="button">Cancelar</button>
+      <button id="salvar" class="botao-salvar" type="submit">Salvar</button>
     </form>
+
+  </div>
+
+  <script>
+    document.getElementById("form-agendamento").onsubmit = function(event){
+      /*Verificar titulo/data*/
+      if(document.getElementById("titulo").value.trim() === "" && document.getElementById("data").value === ""){
+        event.preventDefault();
+        alert("Preencha os campos Título e Data para salvar!")
+        return;
+      }
+
+      if(document.getElementById("titulo").value.trim() === ""){
+        event.preventDefault();
+        alert("Preencha o campo Título para salvar!")
+        return;
+      }
+
+      if(document.getElementById("data").value === ""){
+        event.preventDefault();
+        alert("Preencha o campo Data para salvar!")
+        return;
+      }
+
+      else{
+        document.getElementById("salvar").addEventListener("click", function(event) {
+            window.parent.document.getElementById("modal-agendamento").style.display = "none";
+        });
+      }
+
+      window.parent.document.getElementById("modal-agendamento").style.display = "none";
+    }
+
+    /*Fechar modal*/
+    document.getElementById("cancelar").addEventListener("click", function(event) {
+      event.preventDefault(); 
+      window.parent.document.getElementById("modal-agendamento").style.display = "none";
+    });     
+  </script>
+</body>
+</html>
 {% endblock %}

@@ -158,5 +158,41 @@ body {
     background-color: purple;
 }
 
+/*Modal agendamento*/
+.modal-agenda/*index.html*/ {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
 
+.modal-content/*index.html*/ {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 0;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
 
+.modal /*form.html*/{
+  display: flex;
+  flex-direction: column; 
+  align-items: center;    
+  justify-content: center; 
+  text-align: center;     
+  height: 100%;
+}           
+
+/*Botoes modal(form.html)*/
+.botao-cancelar{
+    width: 67px;
+}
+
+.botao-salvar{
+    width: 67px;
+}
