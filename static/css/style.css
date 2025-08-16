@@ -13,7 +13,7 @@ body {
     flex-wrap: wrap;
 }
 
-/*Calendário*/
+/*Corpo calendário*/
 .calendario, .dias-semana, .seteh, .oitoh, .noveh, .dezh, .onzeh, .dozeh, .umah, .duash, .tresh, .quatroh, .cincoh, .seish {
     width: 80%;
     border-collapse: collapse;

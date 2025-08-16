@@ -10,24 +10,37 @@
 </head>
 <body>
   <div class="modal">
+    <!--Título do modal de agendar-->
     <h3>Agendar compromisso</h3>
 
     <form id="form-agendamento">
-      <label>Título:</label><br>
-      <input  id="titulo" type="text"><br><br>
-      <label>Data:</label><br>
-      <input id="data" type="date"><br><br>
-      <label>Descrição:</label><br>
-      <textarea></textarea><br><br>
+      <!--Dados para agendar compromisso-->
+      <label>
+        Título:<br>
+        <input  id="titulo" type="text"><br><br>
+      </label>
       
+      <label>
+        Data:<br>
+        <input id="data" type="date"><br><br>
+      </label>
+      
+      <label>
+        Descrição:<br>
+        <textarea></textarea><br><br>
+      </label>
+      
+      <!--Botões "salvar" e "cancelar"-->
       <button id="cancelar" class="botao-cancelar" type="button">Cancelar</button>
       <button id="salvar" class="botao-salvar" type="submit">Salvar</button>
     </form>
 
   </div>
 
+  <!--Js dentro do modal de agendamento-->
   <script>
     document.getElementById("form-agendamento").onsubmit = function(event){
+
       /*Verificar titulo/data*/
       if(document.getElementById("titulo").value.trim() === "" && document.getElementById("data").value === ""){
         event.preventDefault();
@@ -35,28 +48,24 @@
         return;
       }
 
-      if(document.getElementById("titulo").value.trim() === ""){
+      else if(document.getElementById("titulo").value.trim() === ""){
         event.preventDefault();
         alert("Preencha o campo Título para salvar!")
         return;
       }
 
-      if(document.getElementById("data").value === ""){
+      else if(document.getElementById("data").value === ""){
         event.preventDefault();
         alert("Preencha o campo Data para salvar!")
         return;
       }
 
       else{
-        document.getElementById("salvar").addEventListener("click", function(event) {
-            window.parent.document.getElementById("modal-agendamento").style.display = "none";
-        });
+        window.parent.document.getElementById("modal-agendamento").style.display = "none";
       }
-
-      window.parent.document.getElementById("modal-agendamento").style.display = "none";
     }
 
-    /*Fechar modal*/
+    /*Fechar modal ao cancelar*/
     document.getElementById("cancelar").addEventListener("click", function(event) {
       event.preventDefault(); 
       window.parent.document.getElementById("modal-agendamento").style.display = "none";
