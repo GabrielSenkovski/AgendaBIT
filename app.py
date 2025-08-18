@@ -35,10 +35,35 @@ class Agendamento(db.Model):
 # Rota principal: Lista todos os agendamentos
 @app.route('/')
 def index():
-    # Busca todos os agendamentos no banco, ordenados pela data
-    agendamentos = Agendamento.query.order_by(Agendamento.data_evento).all()
-    # Renderiza o template 'index.html' passando a lista de agendamentos
-    return render_template('index.html', agendamentos=agendamentos)
+    # --- Lógica para buscar os dados no banco ---
+    proximos_agendamentos = Agendamento.query.filter(Agendamento.data_evento >= datetime.today()).order_by(Agendamento.data_evento).limit(5).all()
+
+    # --- Lógica para preparar os dados da semana e do calendário ---
+    
+    # Por exemplo:
+    semana_exemplo = {
+        "dia_atual": "16/Ago",
+        "inicio": "11/Ago",
+        "fim": "17/Ago",
+        "dias": [
+            {"nome": "Domingo", "data": "11/08"},
+            {"nome": "Segunda", "data": "12/08"},
+            # ... etc
+        ]
+    }
+    horarios_exemplo = [
+        {"hora": "07", "agendamentos": [None, {"titulo": "Dentista"}, None, None, None, None, None]},
+        {"hora": "08", "agendamentos": [None, None, None, {"titulo": "Reunião"}, None, None, None]},
+        # ... etc
+    ]
+
+    # --- Enviar os dados para o template ---
+    return render_template(
+        'index.html', 
+        proximos_agendamentos=proximos_agendamentos,
+        semana=semana_exemplo, # Substituir pela sua lógica real
+        horarios_da_semana=horarios_exemplo # Substituir pela sua lógica real
+    )
 
 
 # Rota para adicionar um novo agendamento
@@ -114,3 +139,5 @@ if __name__ == "__main__":
         db.create_all()
     # Roda a aplicação em modo de desenvolvimento (debug)
     app.run(debug=True)
+
+    
