@@ -159,6 +159,41 @@ body {
 }
 
 /*Modal agendamento*/
+.content-agendar{/*form.html*/
+    display: none;
+}
+
+.content-editar{/*form.html*/
+    display: none;
+}
+
+.content-remover{/*form.html*/
+    display: none;
+}
+
+.content-buscar{/*form.html*/
+    display: none;
+}
+
+.calendario-buscar{/*form.html*/
+    display: flex;
+    text-align: center;
+    padding-top: 60px;
+    padding-bottom: 80px;
+}
+
+.lista-editar{/*form.html*/
+    list-style: none;
+}
+
+.lista-editar li{/*form.html*/
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
 .modal-agenda/*index.html*/ {
   display: none;
   position: fixed;
@@ -195,4 +230,15 @@ body {
 
 .botao-salvar{
     width: 67px;
+}
+
+/*Destacar item selecionado na lista*/
+.selecionado {
+  background-clip: content-box;
+  background-color: #979898;
+}
+
+/*Body do form.html*/
+.body-form{/*form.html*/
+    padding-top: 0px;
 }

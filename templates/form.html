@@ -1,6 +1,6 @@
-{% extends 'base.html' %}
+<!-- {% extends 'base.html' %}
 
-{% block content %}
+{% block content %} -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,33 +8,97 @@
 <title>Formulário de Agendamento</title>
 <link rel="stylesheet" href="/static/css/style.css">
 </head>
-<body>
+<body class="body-form">
   <div class="modal">
-    <!--Título do modal de agendar-->
-    <h3>Agendar compromisso</h3>
+    <!--Conteúdo do modal ao agendar-->
+    <div id="modal-agendando" class="content-agendar">
+      <!--Título do modal de agendar-->
+      <h3>Agendar compromisso</h3>
 
-    <form id="form-agendamento">
-      <!--Dados para agendar compromisso-->
-      <label>
-        Título:<br>
-        <input  id="titulo" type="text"><br><br>
-      </label>
-      
-      <label>
+      <form id="form-agendamento">
+        <!--Dados para agendar compromisso-->
+        <label>
+          Título:<br>
+          <input  id="titulo" type="text"><br><br>
+        </label>
+        
+        <label>
+          Data:<br>
+          <input id="data" type="date"><br><br>
+        </label>
+        
+        <label>
+          Descrição:<br>
+          <textarea></textarea><br><br>
+        </label>
+        
+        <!--Botões "salvar" e "cancelar"-->
+        <button id="cancelar-agendamento" class="botao-cancelar" type="button">Cancelar</button>
+        <button class="botao-salvar" type="submit">Salvar</button>
+      </form>
+    </div>
+
+    <!--Conteúdo do modal ao editar-->
+    <div id="modal-editando" class="content-editar">
+      <!--Título do modal de editar-->
+      <h3>Editar compromisso</h3>
+
+      <!--Lista de compromissos-->
+      <ul id="lista-compromisso" class="lista-editar">
+        <li>Compromisso 1</li>
+        <li>Compromisso 2</li>
+        <li>Compromisso 3</li>
+        <li>Compromisso 4</li>
+        <li>Compromisso 5</li>
+        <li>Compromisso 6</li>
+        <li>Compromisso 7</li>
+        <li>Compromisso 8</li>
+      </ul>
+
+      <!--Botões "editar" e "cancelar"-->
+      <button id="cancelar-edicao" class="botao-cancelar" type="button">Cancelar</button>
+      <button class="botao-salvar" type="button">Editar</button>
+    </div>
+
+    <!--Conteúdo do modal ao remover-->
+    <div id="modal-removendo" class="content-remover">
+      <!--Título do modal de remover-->
+      <h3>Remover compromisso</h3>
+
+      <form id="form-remocao">
+        <!--Lista de compromissos-->
+        <ul id="lista-compromisso" class="lista-editar">
+          <li>Compromisso 1</li>
+          <li>Compromisso 2</li>
+          <li>Compromisso 3</li>
+          <li>Compromisso 4</li>
+          <li>Compromisso 5</li>
+          <li>Compromisso 6</li>
+          <li>Compromisso 7</li>
+          <li>Compromisso 8</li>
+        </ul>
+
+        <!--Botões "remover" e "cancelar"-->
+        <button id="cancelar-remocao" class="botao-cancelar" type="button">Cancelar</button>
+        <button class="botao-salvar" type="reset">Remover</button>
+      </form>
+    </div>
+
+    <!--Conteúdo do modal ao buscar-->
+    <div id="modal-buscando" class="content-buscar">
+      <!--Título do modal de buscar-->
+      <h3>Buscar dia</h3>
+
+      <!--Calendário-->
+      <label class="calendario-buscar">
         Data:<br>
-        <input id="data" type="date"><br><br>
+        <input type="date"><br><br>
       </label>
-      
-      <label>
-        Descrição:<br>
-        <textarea></textarea><br><br>
-      </label>
-      
-      <!--Botões "salvar" e "cancelar"-->
-      <button id="cancelar" class="botao-cancelar" type="button">Cancelar</button>
-      <button id="salvar" class="botao-salvar" type="submit">Salvar</button>
-    </form>
 
+      <!--Botões "buscar" e "cancelar"-->
+      <button id="cancelar-busca" class="botao-cancelar" type="button">Cancelar</button>
+      <button class="botao-salvar" type="submit">Buscar</button>
+    </div>
   </div>
 
   <!--Js dentro do modal de agendamento-->
@@ -61,16 +125,65 @@
       }
 
       else{
-        window.parent.document.getElementById("modal-agendamento").style.display = "none";
+        window.parent.document.getElementById("modal").style.display = "none";
+        document.getElementById("modal-agendando").style.display = "none";
       }
     }
 
+    /*Selecionar item da lista*/
+    document.querySelectorAll("#lista-compromisso li").forEach(function(item) {
+      item.addEventListener("click", function() {
+        document.querySelectorAll("#lista-compromisso li").forEach(function(el) {
+          el.classList.remove("selecionado");
+        });
+        this.classList.add("selecionado");
+      });
+    });
+
+    /*Fechar modal ao remover*/
+    document.getElementById("form-remocao").onreset = function(event){
+      window.parent.document.getElementById("modal").style.display = "none";
+      document.getElementById("modal-removendo").style.display = "none";
+      document.querySelectorAll("#lista-compromisso li").forEach(function(el) {
+          el.classList.remove("selecionado");
+      });
+    };
+
     /*Fechar modal ao cancelar*/
-    document.getElementById("cancelar").addEventListener("click", function(event) {
+    /*Agendamento*/
+    document.getElementById("cancelar-agendamento").addEventListener("click", function(event) {
       event.preventDefault(); 
-      window.parent.document.getElementById("modal-agendamento").style.display = "none";
-    });     
+      window.parent.document.getElementById("modal").style.display = "none";
+      document.getElementById("modal-agendando").style.display = "none";
+    });
+
+    /*Edição*/
+    document.getElementById("cancelar-edicao").addEventListener("click", function(event) {
+      event.preventDefault(); 
+      window.parent.document.getElementById("modal").style.display = "none";
+      document.getElementById("modal-editando").style.display = "none";
+      document.querySelectorAll("#lista-compromisso li").forEach(function(el) {
+        el.classList.remove("selecionado");
+      });
+    });
+
+    /*Remoção*/
+    document.getElementById("cancelar-remocao").addEventListener("click", function(event) {
+      event.preventDefault(); 
+      window.parent.document.getElementById("modal").style.display = "none";
+      document.getElementById("modal-removendo").style.display = "none";
+      document.querySelectorAll("#lista-compromisso li").forEach(function(el) {
+        el.classList.remove("selecionado");
+      });
+    });
+
+    /*Busca*/
+    document.getElementById("cancelar-busca").addEventListener("click", function(event) {
+      event.preventDefault(); 
+      window.parent.document.getElementById("modal").style.display = "none";
+      document.getElementById("modal-buscando").style.display = "none";
+    });
   </script>
 </body>
 </html>
-{% endblock %}
+<!-- {% endblock %} -->

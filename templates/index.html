@@ -35,22 +35,22 @@
 
             <!--Botões de compromisso-->
             <div class="botoes-marcar">
-                <button id="abrir-agendamento" class="marcar">Agendar</button>
-                <button class="editar">Editar</button>
-                <button class="desmarcar">Remover</button>
+                <button id="abrir-agendar" class="marcar">Agendar</button>
+                <button id="abrir-editar" class="editar">Editar</button>
+                <button id="abrir-remover" class="desmarcar">Remover</button>
             </div>
 
             <!--Botões utilitários-->
             <div class="botoes-mudar">
-                <button class="buscar">🔍︎Buscar dia</button>
+                <button id="abrir-buscar" class="buscar">🔍︎Buscar dia</button>
                 <button class="mudar">Mudar turno</button>
             </div>
         </div>
 
-        <!--Modal ao agendar-->
-        <div id="modal-agendamento" class="modal-agenda">
+        <!--Modal-->
+        <div id="modal" class="modal-agenda">
             <div class="modal-content">
-                <iframe src="form.html" width="100%" height="300" style="border:none;"></iframe>
+                <iframe id="iframe-modal" src="form.html" width="100%" height="300" style="border:none;"></iframe>
             </div>
         </div>
 
@@ -153,7 +153,7 @@
     </div>
 
     <!--Já tava ai e não mexi-->
-    <div class="container">
+    <!-- <div class="container">
         {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 {% for category, message in messages %}
@@ -163,18 +163,54 @@
         {% endwith %}
 
         {% block content %}{% endblock %}
-    </div>
+    </div> -->
 
-    <!--Js do modal de agendar-->
+    <!--Js do modal-->
     <script>
-        document.getElementById("abrir-agendamento").addEventListener("click", function(event){
-            document.getElementById("modal-agendamento").style.display = "block";
+        /*Abrir modal ao agendar*/
+        document.getElementById("abrir-agendar").addEventListener("click", function(event){
+            document.getElementById("modal").style.display = "block";
+            document.getElementById("iframe-modal").contentWindow.document.getElementById("modal-agendando").style.display = "block";
+
+        });
+
+        /*Abrir modal ao editar*/
+        document.getElementById("abrir-editar").addEventListener("click", function(event){
+            document.getElementById("modal").style.display = "block";
+            document.getElementById("iframe-modal").contentWindow.document.getElementById("modal-editando").style.display = "block";
+
+        });
+
+        /*Abrir modal ao remover*/
+        document.getElementById("abrir-remover").addEventListener("click", function(event){
+            document.getElementById("modal").style.display = "block";
+            document.getElementById("iframe-modal").contentWindow.document.getElementById("modal-removendo").style.display = "block";
+
+        });
+
+        /*Abrir modal ao buscar*/
+        document.getElementById("abrir-buscar").addEventListener("click", function(event){
+            document.getElementById("modal").style.display = "block";
+            document.getElementById("iframe-modal").contentWindow.document.getElementById("modal-buscando").style.display = "block";
         });
 
         /*Fechar ao clicar fora do modal*/
         window.onclick = function(event){
-            if(event.target == document.getElementById("modal-agendamento")){
-                document.getElementById("modal-agendamento").style.display = "none";
+            if(event.target == document.getElementById("modal")){
+                document.getElementById("modal").style.display = "none";
+                
+                document.getElementById("iframe-modal").contentWindow.document.getElementById("modal-agendando").style.display = "none";
+
+                document.getElementById("iframe-modal").contentWindow.document.getElementById("modal-editando").style.display = "none";
+
+                document.getElementById("iframe-modal").contentWindow.document.getElementById("modal-removendo").style.display = "none";
+
+                document.getElementById("iframe-modal").contentWindow.document.getElementById("modal-buscando").style.display = "none";
+
+                /*Deselecionar ao clicar fora*/
+                document.getElementById("iframe-modal").contentWindow.document.querySelectorAll("#lista-compromisso li").forEach(function(el) {
+                    el.classList.remove("selecionado");
+                });
             }
         }
     </script>
