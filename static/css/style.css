@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
-    background-color: #f5f5f5;
+    background-color: rgba(238, 169, 42, 0.286);
 }
 
 .agenda{
@@ -23,12 +23,12 @@ body {
 .calendario {
     width: 77%;
     border-collapse: collapse;
-    background-color: white;
+    background-color: rgba(238, 169, 42, 0.286);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .calendario th {
-    background-color: #f0f0f0;
+    background-color: rgba(238, 169, 42, 0.286);
     font-weight: bold;
 }
 
@@ -62,7 +62,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 15px 20px;
-    background-color: #4c4e4f;
+    background-color: #ffa500;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.579);
     border-radius: 5px;
     margin-bottom: 0.75px;
@@ -83,7 +83,7 @@ body {
 }
 
 .compromissos{
-    background-color: rgb(139, 138, 138);
+    background-color: rgb(245, 189, 85);
     padding-top: 15px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(30, 28, 28, 0.525);
@@ -133,29 +133,37 @@ body {
 
 .desmarcar{
     border-right-width: 1px;
-    background-color: rgb(239, 47, 47);
+    background-color: rgb(239, 181, 47);
+    font-weight: bold;
 }
 
 .editar{
-    background-color: aquamarine;
+    background-color: rgb(33, 248, 123);
+    font-weight: bold;
 }
 
 .marcar{
-    background-color: rgb(56, 231, 56);
+    background-color: rgb(152, 241, 19);
+    font-weight: bold;
 }
 
-.botoes-mudar{
+.botoes-util{
     display: flex;
     gap: 0.11px;
 }
 
-.botoes-mudar  button{
+.botoes-util  button{
     width: 100%;
     padding: 22px 0px;
+    font-weight: bold;
 }
 
 .mudar{
-    background-color: purple;
+    background-color: rgb(6, 212, 249);
+}
+
+.buscar{
+    background-color: #ffff00;
 }
 
 /*Modal agendamento*/

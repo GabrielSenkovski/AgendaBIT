@@ -7,20 +7,20 @@
     <link rel="stylesheet" href="/static/css/style.css">
     <title>Minha Agenda</title>
 </head>
-<body>
+<body id="body-index">
     <div class="agenda">
          <!--Barra superior-->
-        <div class="cabecalho-superior">
-            <span class="mudar-semana">← Semana anterior</span>
+        <div id="cabecalho-superior" class="cabecalho-superior">
+            <span id="mudar-semana-1" class="mudar-semana">← Semana anterior</span>
             <span>Dia: 07/Junho</span>
             <span class="nome-agenda">Minha Agenda</span>
             <span>Semana: 03/Junho - 09/Junho</span>
-            <span class="mudar-semana">Semana seguinte →</span>
+            <span id="mudar-semana-2" class="mudar-semana">Semana seguinte →</span>
         </div>
     
         <!--Coluna na extrema esquerda-->
         <div class="lateral-esquerda">
-            <div class="compromissos">
+            <div id="compromissos" class="compromissos">
                 <h5>Próximos compromissos</h5>
                 <ul class="lista-compromissos">
                     <li>Compromisso 1</li>
@@ -41,9 +41,9 @@
             </div>
 
             <!--Botões utilitários-->
-            <div class="botoes-mudar">
+            <div class="botoes-util">
                 <button id="abrir-buscar" class="buscar">🔍︎Buscar dia</button>
-                <button class="mudar">Mudar turno</button>
+                <button id="mudar" class="mudar">Mudar turno</button>
             </div>
         </div>
 
@@ -55,7 +55,7 @@
         </div>
 
         <!--Corpo do calendário-->
-        <table class="calendario">
+        <table id="calendario" class="calendario">
             <thead>
                 <tr class="dias-semana">
                     <th>Domingo</th>
@@ -213,6 +213,54 @@
                 });
             }
         }
+
+        /*Mudar tema*/
+        document.getElementById("mudar").addEventListener("click", function(event){
+            if (window.getComputedStyle(document.getElementById("mudar")).backgroundColor === "rgb(6, 212, 249)"){
+                document.getElementById("mudar").style.backgroundColor = "rgb(4, 45, 246)";
+                document.getElementById("abrir-buscar").style.backgroundColor = "rgb(130, 176, 249)";
+                document.getElementById("abrir-agendar").style.backgroundColor = "rgb(19, 241, 167)";
+                document.getElementById("abrir-editar").style.backgroundColor = "rgb(126, 248, 33)";
+                document.getElementById("abrir-remover").style.backgroundColor = "rgb(239, 204, 47)";
+                document.getElementById("compromissos").style.backgroundColor = "rgb(165, 199, 251)";
+                document.getElementById("cabecalho-superior").style.backgroundColor = "rgb(76, 141, 246)";
+                document.getElementById("calendario").style.backgroundColor = "rgb(219, 234, 254)";
+                document.querySelectorAll("#calendario th").forEach(th => th.style.backgroundColor = "rgb(183, 210, 252)");
+                document.getElementById("body-index").style.backgroundColor = "rgb(201, 222, 253)";
+                document.getElementById("mudar-semana-1").style.color = "#33df11";
+                document.getElementById("mudar-semana-2").style.color = "#33df11";
+            }
+
+            else if (window.getComputedStyle(document.getElementById("mudar")).backgroundColor === "rgb(4, 45, 246)"){
+                document.getElementById("mudar").style.backgroundColor = "rgb(255, 165, 0)";
+                document.getElementById("abrir-buscar").style.backgroundColor = "rgb(34, 85, 202)";
+                document.getElementById("abrir-agendar").style.backgroundColor = "rgb(19, 156, 241)";
+                document.getElementById("abrir-editar").style.backgroundColor = "rgb(33, 248, 176)";
+                document.getElementById("abrir-remover").style.backgroundColor = "rgb(239, 47, 47)";
+                document.getElementById("compromissos").style.backgroundColor = "rgb(46, 100, 214)";
+                document.getElementById("cabecalho-superior").style.backgroundColor = "rgb(39, 86, 198)";
+                document.getElementById("calendario").style.backgroundColor = "rgb(94, 153, 247)";
+                document.querySelectorAll("#calendario th").forEach(th => th.style.backgroundColor = "rgb(52, 115, 230)");
+                document.getElementById("body-index").style.backgroundColor = "rgb(112, 164, 248)";
+                document.getElementById("mudar-semana-1").style.color = "purple";
+                document.getElementById("mudar-semana-2").style.color = "purple";
+            }
+
+            else if (window.getComputedStyle(document.getElementById("mudar")).backgroundColor === "rgb(255, 165, 0)"){
+                document.getElementById("mudar").style.backgroundColor = "rgb(6, 212, 249)";
+                document.getElementById("abrir-buscar").style.backgroundColor = "#ffff00";
+                document.getElementById("abrir-agendar").style.backgroundColor = "rgb(152, 241, 19)";
+                document.getElementById("abrir-editar").style.backgroundColor = "rgb(33, 248, 123)";
+                document.getElementById("abrir-remover").style.backgroundColor = "rgb(239, 181, 47)";
+                document.getElementById("compromissos").style.backgroundColor = "rgb(245, 189, 85)";
+                document.getElementById("cabecalho-superior").style.backgroundColor = "#ffa500";
+                document.getElementById("calendario").style.backgroundColor = "rgba(238, 169, 42, 0.286)";
+                document.querySelectorAll("#calendario th").forEach(th => th.style.backgroundColor = "rgba(238, 169, 42, 0.286)");
+                document.getElementById("body-index").style.backgroundColor = "rgba(238, 169, 42, 0.286)";
+                document.getElementById("mudar-semana-1").style.color = "#3681cb";
+                document.getElementById("mudar-semana-2").style.color = "#3681cb";
+            }
+        })
     </script>
 </body>
 </html>
