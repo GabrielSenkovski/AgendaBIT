@@ -250,3 +250,70 @@ body {
 .body-form{/*form.html*/
     padding-top: 0px;
 }
+
+/* static/css/style.css */
+
+/* TEMA PADRÃO (DIA) */
+#body-index {
+    background-color: rgb(201, 222, 253);
+}
+#cabecalho-superior {
+    background-color: rgb(76, 141, 246);
+}
+#compromissos {
+    background-color: rgb(165, 199, 251);
+}
+#calendario {
+    background-color: rgb(219, 234, 254);
+}
+#calendario th {
+    background-color: rgb(183, 210, 252);
+}
+.mudar-semana {
+    color: #33df11;
+}
+/* Adicione aqui os estilos dos botões para o tema DIA */
+
+
+/* TEMA TARDE */
+body.theme-tarde {
+    background-color: rgba(238, 169, 42, 0.286);
+}
+.theme-tarde #cabecalho-superior {
+    background-color: #ffa500;
+}
+.theme-tarde #compromissos {
+    background-color: rgb(245, 189, 85);
+}
+.theme-tarde #calendario {
+    background-color: rgba(238, 169, 42, 0.286);
+}
+.theme-tarde #calendario th {
+    background-color: rgba(238, 169, 42, 0.286);
+}
+.theme-tarde .mudar-semana {
+    color: #3681cb;
+}
+/* Adicione aqui os estilos dos botões para o tema TARDE */
+
+
+/* TEMA NOITE */
+body.theme-noite {
+    background-color: rgb(112, 164, 248);
+}
+.theme-noite #cabecalho-superior {
+    background-color: rgb(39, 86, 198);
+}
+.theme-noite #compromissos {
+    background-color: rgb(46, 100, 214);
+}
+.theme-noite #calendario {
+    background-color: rgb(94, 153, 247);
+}
+.theme-noite #calendario th {
+    background-color: rgb(52, 115, 230);
+}
+.theme-noite .mudar-semana {
+    color: purple;
+}
+/* Adicione aqui os estilos dos botões para o tema NOITE */

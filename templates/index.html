@@ -1,266 +1,72 @@
-<!doctype html>
-<html lang="pt-br">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/style.css">
-    <title>Minha Agenda</title>
-</head>
-<body id="body-index">
-    <div class="agenda">
-         <!--Barra superior-->
-        <div id="cabecalho-superior" class="cabecalho-superior">
-            <span id="mudar-semana-1" class="mudar-semana">← Semana anterior</span>
-            <span>Dia: 07/Junho</span>
-            <span class="nome-agenda">Minha Agenda</span>
-            <span>Semana: 03/Junho - 09/Junho</span>
-            <span id="mudar-semana-2" class="mudar-semana">Semana seguinte →</span>
-        </div>
-    
-        <!--Coluna na extrema esquerda-->
-        <div class="lateral-esquerda">
-            <div id="compromissos" class="compromissos">
-                <h5>Próximos compromissos</h5>
-                <ul class="lista-compromissos">
-                    <li>Compromisso 1</li>
-                    <li>Compromisso 2</li>
-                    <li>Compromisso 3</li>
-                    <li>Compromisso 4</li>
-                    <li>Compromisso 5</li>
-                    <li>Compromisso 6</li>
-                    <li>Compromisso 7</li>
-                </ul>
-            </div>
+{% extends 'base.html' %}
 
-            <!--Botões de compromisso-->
-            <div class="botoes-marcar">
-                <button id="abrir-agendar" class="marcar">Agendar</button>
-                <button id="abrir-editar" class="editar">Editar</button>
-                <button id="abrir-remover" class="desmarcar">Remover</button>
-            </div>
+{% block title %}Visão da Agenda{% endblock %}
 
-            <!--Botões utilitários-->
-            <div class="botoes-util">
-                <button id="abrir-buscar" class="buscar">🔍︎Buscar dia</button>
-                <button id="mudar" class="mudar">Mudar turno</button>
-            </div>
-        </div>
-
-        <!--Modal-->
-        <div id="modal" class="modal-agenda">
-            <div class="modal-content">
-                <iframe id="iframe-modal" src="form.html" width="100%" height="300" style="border:none;"></iframe>
-            </div>
-        </div>
-
-        <!--Corpo do calendário-->
-        <table id="calendario" class="calendario">
-            <thead>
-                <tr class="dias-semana">
-                    <th>Domingo</th>
-                    <th>Segunda-feira</th>
-                    <th>Terça-feira</th>
-                    <th>Quarta-feira</th>
-                    <th>Quinta-feira</th>
-                    <th>Sexta-feira</th>
-                    <th>Sábado</th>
-                </tr>
-            </thead>
-
-            <tbody class="horarios">
-                <tr class="seteh">
-                    <td>primeiro horario dom</td>
-                    <td>primeiro horario seg</td>
-                    <td>primeiro horario terc</td>
-                    <td>primeiro horario quarta</td>
-                    <td>primeiro horario quinta</td>
-                    <td>primeiro horario sexta</td>
-                    <td>primeiro horario sábado</td>
-                </tr>
-
-                <tr class="oitoh">
-                    <td>segundo horario dom</td>
-                    <td>segundo horario seg</td>
-                    <td>segundo horario terc</td>
-                    <td>segundo horario quarta</td>
-                    <td>segundo horario quinta</td>
-                    <td>segundo horario sexta</td>
-                    <td>segundo horario sábado</td>
-                </tr>
-
-                <tr class="noveh">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-
-                <tr class="dezh">
-                    <td>quarto horario dom</td>
-                    <td>quarto horario seg</td>
-                    <td>quarto horario terc</td>
-                    <td>quarto horario quarta</td>
-                    <td>quarto horario quinta</td>
-                    <td>quarto horario sexta</td>
-                    <td>quarto horario sábado</td>
-                </tr>
-
-                <tr class="onzeh">
-                    <td>quinto horario dom</td>
-                    <td>quinto horario seg</td>
-                    <td>quinto horario terc</td>
-                    <td>quinto horario quarta</td>
-                    <td>quinto horario quinta</td>
-                    <td>quinto horario sexta</td>
-                    <td>quinto horario sábado</td>
-                </tr>
-
-                <tr class="dozeh">
-                    <td>sexto horario dom</td>
-                    <td>sexto horario seg</td>
-                    <td>sexto horario terc</td>
-                    <td>sexto horario quarta</td>
-                    <td>sexto horario quinta</td>
-                    <td>sexto horario sexta</td>
-                    <td>sexto horario sábado</td>
-                </tr>
-
-                <tr class="umah">
-                    <td>sétimo horario dom</td>
-                    <td>sétimo horario seg</td>
-                    <td>sétimo horario terc</td>
-                    <td>sétimo horario quarta</td>
-                    <td>sétimo horario quinta</td>
-                    <td>sétimo horario sexta</td>
-                    <td>sétimo horario sábado</td>
-                </tr>
-
-                <tr class="duash">
-                    <td>oitavo horario dom</td>
-                    <td>oitavo horario seg</td>
-                    <td>oitavo horario terc</td>
-                    <td>oitavo horario quarta</td>
-                    <td>oitavo horario quinta</td>
-                    <td>oitavo horario sexta</td>
-                    <td>oitavo horario sábado</td>
-                </tr>   
-            </tbody>
-        </table>
+{% block content %}
+<div class="agenda">
+    <div class="cabecalho-superior text-center py-2 mb-4">
+        <a href="#" class="px-3">← Semana anterior</a>
+        <span class="px-3"><strong>Dia:</strong> {{ dias_da_semana[now.weekday() if now.weekday() < 6 else 6].data_obj.strftime('%d/%b') }}</span>
+        <span class="nome-agenda px-3 h4">Minha Agenda</span>
+        <span class="px-3"><strong>Semana:</strong> {{ dias_da_semana[0].data_obj.strftime('%d/%b') }} - {{ dias_da_semana[6].data_obj.strftime('%d/%b') }}</span>
+        <a href="#" class="px-3">Semana seguinte →</a>
     </div>
 
-    <!--Já tava ai e não mexi-->
-    <!-- <div class="container">
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ category }}">{{ message }}</div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
+    <div class="row">
+        <div class="col-md-3">
+            <div class="lateral-esquerda">
+                <h5>Próximos compromissos</h5>
+                <a href="{{ url_for('add') }}" class="btn btn-primary btn-block my-3">Agendar Novo</a>
+                <ul class="list-group">
+                    {% for agendamento in agendamentos %}
+                        <li class="list-group-item">
+                            <strong>{{ agendamento.titulo }}</strong> <br>
+                            <small>{{ agendamento.data_evento.strftime('%d/%m/%Y') }} às {{ agendamento.hora_inicio.strftime('%H:%M') }}</small>
+                            <div class="mt-2">
+                                <a href="{{ url_for('edit', id=agendamento.id) }}" class="btn btn-sm btn-secondary">Editar</a>
+                                <a href="{{ url_for('delete', id=agendamento.id) }}" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza?');">Excluir</a>
+                            </div>
+                        </li>
+                    {% else %}
+                        <li class="list-group-item">Nenhum compromisso futuro.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
 
-        {% block content %}{% endblock %}
-    </div> -->
-
-    <!--Js do modal-->
-    <script>
-        /*Abrir modal ao agendar*/
-        document.getElementById("abrir-agendar").addEventListener("click", function(event){
-            document.getElementById("modal").style.display = "block";
-            document.getElementById("iframe-modal").contentWindow.document.getElementById("modal-agendando").style.display = "block";
-
-        });
-
-        /*Abrir modal ao editar*/
-        document.getElementById("abrir-editar").addEventListener("click", function(event){
-            document.getElementById("modal").style.display = "block";
-            document.getElementById("iframe-modal").contentWindow.document.getElementById("modal-editando").style.display = "block";
-
-        });
-
-        /*Abrir modal ao remover*/
-        document.getElementById("abrir-remover").addEventListener("click", function(event){
-            document.getElementById("modal").style.display = "block";
-            document.getElementById("iframe-modal").contentWindow.document.getElementById("modal-removendo").style.display = "block";
-
-        });
-
-        /*Abrir modal ao buscar*/
-        document.getElementById("abrir-buscar").addEventListener("click", function(event){
-            document.getElementById("modal").style.display = "block";
-            document.getElementById("iframe-modal").contentWindow.document.getElementById("modal-buscando").style.display = "block";
-        });
-
-        /*Fechar ao clicar fora do modal*/
-        window.onclick = function(event){
-            if(event.target == document.getElementById("modal")){
-                document.getElementById("modal").style.display = "none";
-                
-                document.getElementById("iframe-modal").contentWindow.document.getElementById("modal-agendando").style.display = "none";
-
-                document.getElementById("iframe-modal").contentWindow.document.getElementById("modal-editando").style.display = "none";
-
-                document.getElementById("iframe-modal").contentWindow.document.getElementById("modal-removendo").style.display = "none";
-
-                document.getElementById("iframe-modal").contentWindow.document.getElementById("modal-buscando").style.display = "none";
-
-                /*Deselecionar ao clicar fora*/
-                document.getElementById("iframe-modal").contentWindow.document.querySelectorAll("#lista-compromisso li").forEach(function(el) {
-                    el.classList.remove("selecionado");
-                });
-            }
-        }
-
-        /*Mudar tema*/
-        document.getElementById("mudar").addEventListener("click", function(event){
-            if (window.getComputedStyle(document.getElementById("mudar")).backgroundColor === "rgb(6, 212, 249)"){
-                document.getElementById("mudar").style.backgroundColor = "rgb(4, 45, 246)";
-                document.getElementById("abrir-buscar").style.backgroundColor = "rgb(130, 176, 249)";
-                document.getElementById("abrir-agendar").style.backgroundColor = "rgb(19, 241, 167)";
-                document.getElementById("abrir-editar").style.backgroundColor = "rgb(126, 248, 33)";
-                document.getElementById("abrir-remover").style.backgroundColor = "rgb(239, 204, 47)";
-                document.getElementById("compromissos").style.backgroundColor = "rgb(165, 199, 251)";
-                document.getElementById("cabecalho-superior").style.backgroundColor = "rgb(76, 141, 246)";
-                document.getElementById("calendario").style.backgroundColor = "rgb(219, 234, 254)";
-                document.querySelectorAll("#calendario th").forEach(th => th.style.backgroundColor = "rgb(183, 210, 252)");
-                document.getElementById("body-index").style.backgroundColor = "rgb(201, 222, 253)";
-                document.getElementById("mudar-semana-1").style.color = "#33df11";
-                document.getElementById("mudar-semana-2").style.color = "#33df11";
-            }
-
-            else if (window.getComputedStyle(document.getElementById("mudar")).backgroundColor === "rgb(4, 45, 246)"){
-                document.getElementById("mudar").style.backgroundColor = "rgb(255, 165, 0)";
-                document.getElementById("abrir-buscar").style.backgroundColor = "rgb(34, 85, 202)";
-                document.getElementById("abrir-agendar").style.backgroundColor = "rgb(19, 156, 241)";
-                document.getElementById("abrir-editar").style.backgroundColor = "rgb(33, 248, 176)";
-                document.getElementById("abrir-remover").style.backgroundColor = "rgb(239, 47, 47)";
-                document.getElementById("compromissos").style.backgroundColor = "rgb(46, 100, 214)";
-                document.getElementById("cabecalho-superior").style.backgroundColor = "rgb(39, 86, 198)";
-                document.getElementById("calendario").style.backgroundColor = "rgb(94, 153, 247)";
-                document.querySelectorAll("#calendario th").forEach(th => th.style.backgroundColor = "rgb(52, 115, 230)");
-                document.getElementById("body-index").style.backgroundColor = "rgb(112, 164, 248)";
-                document.getElementById("mudar-semana-1").style.color = "purple";
-                document.getElementById("mudar-semana-2").style.color = "purple";
-            }
-
-            else if (window.getComputedStyle(document.getElementById("mudar")).backgroundColor === "rgb(255, 165, 0)"){
-                document.getElementById("mudar").style.backgroundColor = "rgb(6, 212, 249)";
-                document.getElementById("abrir-buscar").style.backgroundColor = "#ffff00";
-                document.getElementById("abrir-agendar").style.backgroundColor = "rgb(152, 241, 19)";
-                document.getElementById("abrir-editar").style.backgroundColor = "rgb(33, 248, 123)";
-                document.getElementById("abrir-remover").style.backgroundColor = "rgb(239, 181, 47)";
-                document.getElementById("compromissos").style.backgroundColor = "rgb(245, 189, 85)";
-                document.getElementById("cabecalho-superior").style.backgroundColor = "#ffa500";
-                document.getElementById("calendario").style.backgroundColor = "rgba(238, 169, 42, 0.286)";
-                document.querySelectorAll("#calendario th").forEach(th => th.style.backgroundColor = "rgba(238, 169, 42, 0.286)");
-                document.getElementById("body-index").style.backgroundColor = "rgba(238, 169, 42, 0.286)";
-                document.getElementById("mudar-semana-1").style.color = "#3681cb";
-                document.getElementById("mudar-semana-2").style.color = "#3681cb";
-            }
-        })
-    </script>
-</body>
-</html>
+        <div class="col-md-9">
+            <table id="calendario" class="table table-bordered calendario text-center">
+                <thead>
+                    <tr class="dias-semana">
+                        <th>Hora</th>
+                        {% for dia in dias_da_semana %}
+                            <th>
+                                {{ dia.nome }} <br> <small>{{ dia.data_obj.strftime('%d/%m') }}</small> 
+                            </th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody class="horarios">
+                    {% for hora, agendamentos_da_hora in calendario.items() %}
+                    <tr>
+                        <td class="font-weight-bold">{{ hora }}</td>
+                        {% for agendamento in agendamentos_da_hora %}
+                            <td>
+                                {% if agendamento %}
+                                    <div class="alert alert-info p-1 small">
+                                        {{ agendamento.titulo }}
+                                        <a href="{{ url_for('edit', id=agendamento.id) }}" class="text-dark">✏️</a>
+                                    </div>
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

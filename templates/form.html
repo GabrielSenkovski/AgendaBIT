@@ -1,189 +1,34 @@
-<!-- {% extends 'base.html' %}
+{% extends 'base.html' %}
 
-{% block content %} -->
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<title>Formulário de Agendamento</title>
-<link rel="stylesheet" href="/static/css/style.css">
-</head>
-<body class="body-form">
-  <div class="modal">
-    <!--Conteúdo do modal ao agendar-->
-    <div id="modal-agendando" class="content-agendar">
-      <!--Título do modal de agendar-->
-      <h3>Agendar compromisso</h3>
+{% block content %}
+    <h2>{{ titulo_pagina }}</h2>
 
-      <form id="form-agendamento">
-        <!--Dados para agendar compromisso-->
-        <label>
-          Título:<br>
-          <input  id="titulo" type="text"><br><br>
-        </label>
+    <form method="POST">
+        <div class="form-group">
+            <label for="titulo">Título</label>
+            <input type="text" class="form-control" name="titulo" 
+                   value="{{ agendamento.titulo if agendamento else '' }}" required>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 form-group">
+                <label for="data_evento">Data do Evento</label>
+                <input type="date" class="form-control" name="data_evento" 
+                       value="{{ agendamento.data_evento.strftime('%Y-%m-%d') if agendamento else '' }}" required>
+            </div>
+            <div class="col-md-6 form-group">
+                <label for="hora_inicio">Hora de Início</label>
+                <input type="time" class="form-control" name="hora_inicio"
+                       value="{{ agendamento.hora_inicio.strftime('%H:%M') if agendamento and agendamento.hora_inicio else '' }}" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="descricao">Descrição</label>
+            <textarea class="form-control" name="descricao" rows="3">{{ agendamento.descricao if agendamento else '' }}</textarea>
+        </div>
         
-        <label>
-          Data:<br>
-          <input id="data" type="date"><br><br>
-        </label>
-        
-        <label>
-          Descrição:<br>
-          <textarea></textarea><br><br>
-        </label>
-        
-        <!--Botões "salvar" e "cancelar"-->
-        <button id="cancelar-agendamento" class="botao-cancelar" type="button">Cancelar</button>
-        <button class="botao-salvar" type="submit">Salvar</button>
-      </form>
-    </div>
-
-    <!--Conteúdo do modal ao editar-->
-    <div id="modal-editando" class="content-editar">
-      <!--Título do modal de editar-->
-      <h3>Editar compromisso</h3>
-
-      <!--Lista de compromissos-->
-      <ul id="lista-compromisso" class="lista-editar">
-        <li>Compromisso 1</li>
-        <li>Compromisso 2</li>
-        <li>Compromisso 3</li>
-        <li>Compromisso 4</li>
-        <li>Compromisso 5</li>
-        <li>Compromisso 6</li>
-        <li>Compromisso 7</li>
-        <li>Compromisso 8</li>
-      </ul>
-
-      <!--Botões "editar" e "cancelar"-->
-      <button id="cancelar-edicao" class="botao-cancelar" type="button">Cancelar</button>
-      <button class="botao-salvar" type="button">Editar</button>
-    </div>
-
-    <!--Conteúdo do modal ao remover-->
-    <div id="modal-removendo" class="content-remover">
-      <!--Título do modal de remover-->
-      <h3>Remover compromisso</h3>
-
-      <form id="form-remocao">
-        <!--Lista de compromissos-->
-        <ul id="lista-compromisso" class="lista-editar">
-          <li>Compromisso 1</li>
-          <li>Compromisso 2</li>
-          <li>Compromisso 3</li>
-          <li>Compromisso 4</li>
-          <li>Compromisso 5</li>
-          <li>Compromisso 6</li>
-          <li>Compromisso 7</li>
-          <li>Compromisso 8</li>
-        </ul>
-
-        <!--Botões "remover" e "cancelar"-->
-        <button id="cancelar-remocao" class="botao-cancelar" type="button">Cancelar</button>
-        <button class="botao-salvar" type="reset">Remover</button>
-      </form>
-    </div>
-
-    <!--Conteúdo do modal ao buscar-->
-    <div id="modal-buscando" class="content-buscar">
-      <!--Título do modal de buscar-->
-      <h3>Buscar dia</h3>
-
-      <!--Calendário-->
-      <label class="calendario-buscar">
-        Data:<br>
-        <input type="date"><br><br>
-      </label>
-
-      <!--Botões "buscar" e "cancelar"-->
-      <button id="cancelar-busca" class="botao-cancelar" type="button">Cancelar</button>
-      <button class="botao-salvar" type="submit">Buscar</button>
-    </div>
-  </div>
-
-  <!--Js dentro do modal de agendamento-->
-  <script>
-    document.getElementById("form-agendamento").onsubmit = function(event){
-
-      /*Verificar titulo/data*/
-      if(document.getElementById("titulo").value.trim() === "" && document.getElementById("data").value === ""){
-        event.preventDefault();
-        alert("Preencha os campos Título e Data para salvar!")
-        return;
-      }
-
-      else if(document.getElementById("titulo").value.trim() === ""){
-        event.preventDefault();
-        alert("Preencha o campo Título para salvar!")
-        return;
-      }
-
-      else if(document.getElementById("data").value === ""){
-        event.preventDefault();
-        alert("Preencha o campo Data para salvar!")
-        return;
-      }
-
-      else{
-        window.parent.document.getElementById("modal").style.display = "none";
-        document.getElementById("modal-agendando").style.display = "none";
-      }
-    }
-
-    /*Selecionar item da lista*/
-    document.querySelectorAll("#lista-compromisso li").forEach(function(item) {
-      item.addEventListener("click", function() {
-        document.querySelectorAll("#lista-compromisso li").forEach(function(el) {
-          el.classList.remove("selecionado");
-        });
-        this.classList.add("selecionado");
-      });
-    });
-
-    /*Fechar modal ao remover*/
-    document.getElementById("form-remocao").onreset = function(event){
-      window.parent.document.getElementById("modal").style.display = "none";
-      document.getElementById("modal-removendo").style.display = "none";
-      document.querySelectorAll("#lista-compromisso li").forEach(function(el) {
-          el.classList.remove("selecionado");
-      });
-    };
-
-    /*Fechar modal ao cancelar*/
-    /*Agendamento*/
-    document.getElementById("cancelar-agendamento").addEventListener("click", function(event) {
-      event.preventDefault(); 
-      window.parent.document.getElementById("modal").style.display = "none";
-      document.getElementById("modal-agendando").style.display = "none";
-    });
-
-    /*Edição*/
-    document.getElementById("cancelar-edicao").addEventListener("click", function(event) {
-      event.preventDefault(); 
-      window.parent.document.getElementById("modal").style.display = "none";
-      document.getElementById("modal-editando").style.display = "none";
-      document.querySelectorAll("#lista-compromisso li").forEach(function(el) {
-        el.classList.remove("selecionado");
-      });
-    });
-
-    /*Remoção*/
-    document.getElementById("cancelar-remocao").addEventListener("click", function(event) {
-      event.preventDefault(); 
-      window.parent.document.getElementById("modal").style.display = "none";
-      document.getElementById("modal-removendo").style.display = "none";
-      document.querySelectorAll("#lista-compromisso li").forEach(function(el) {
-        el.classList.remove("selecionado");
-      });
-    });
-
-    /*Busca*/
-    document.getElementById("cancelar-busca").addEventListener("click", function(event) {
-      event.preventDefault(); 
-      window.parent.document.getElementById("modal").style.display = "none";
-      document.getElementById("modal-buscando").style.display = "none";
-    });
-  </script>
-</body>
-</html>
-<!-- {% endblock %} -->
+        <button type="submit" class="btn btn-success">Salvar</button>
+        <a href="{{ url_for('index') }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+{% endblock %}
