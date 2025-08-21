@@ -1,9 +1,3 @@
-/* ================================================
- LÓGICA PARA ABRIR E FECHAR OS MODAIS
-================================================
-Aviso: Este código ainda depende da estrutura com <iframe> e múltiplos
-modais dentro de 'form.html'. Funcionará, mas pode ser simplificado no futuro.
-*/
 
 /* Abrir modal ao agendar */
 document.getElementById("abrir-agendar").addEventListener("click", function(event){
